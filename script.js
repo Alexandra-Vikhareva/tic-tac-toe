@@ -1,8 +1,11 @@
 const gameboard = (function() {
+    
     const board = ['','','', '','','','','',''];
 
     const addSign = (index, sign) => {
-        board[index] = sign;
+        if (getSign(index) === '') {
+            board[index] = sign;
+        }
     }
 
     const getSign = (index) => {
@@ -14,5 +17,7 @@ const gameboard = (function() {
             board[i] = ''
         }
     }
+
     return {board, addSign, getSign, resetBoard}
+
 })();
