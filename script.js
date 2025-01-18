@@ -18,7 +18,19 @@ const gameboard = (function() {
         }
     }
 
-    return {board, addSign, getSign, resetBoard}
+    const checkWins = (sign) => {
+      if ((board[0] == sign && board[1] == sign && board[2] == sign)||
+      (board[3] == sign && board[4] == sign && board[5] == sign)||
+      (board[6] == sign && board[7] == sign && board[8] == sign)||
+      (board[0] == sign && board[3] == sign && board[6] == sign)||
+      (board[1] == sign && board[4] == sign && board[7] == sign)||
+      (board[2] == sign && board[5] == sign && board[8] == sign)||
+      (board[0] == sign && board[4] == sign && board[8] == sign)||
+      (board[6] == sign && board[4] == sign && board[2] == sign)
+    ) console.log(`Game over. The winer is ${sign}`);
+    }
+
+    return {board, addSign, getSign, resetBoard, checkWins}
 
 })();
 
