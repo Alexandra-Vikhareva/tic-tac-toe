@@ -58,11 +58,28 @@ startButton.addEventListener('click', () => {
 })
 
 function drawBoard(){
+  let round = 0;
+  const marks = ['O', 'X'];
   let board = document.createElement('div');
   board.className = 'board';
   for (let i = 0; i <= 8; i++){
     let cell = document.createElement('div');
     cell.className = 'cell';
+    cell.addEventListener('click', () => {
+      const cells = Array.from(document.querySelectorAll('.cell'));
+      const checkedIndex = cells.indexOf(cell);
+      if (gameboard.board[checkedIndex]==''){
+        round++;
+        gameboard.addSign(checkedIndex, marks[round % 2]);
+        const img = document.createElement('img');
+        if (round % 2 !== 0){
+          img.src = 'https://jithin-rajesh.github.io/tic-tac-toe/icons/x-symbol-svgrepo-com.svg';
+        }else{
+          img.src = 'https://jithin-rajesh.github.io/tic-tac-toe/icons/circle-svgrepo-com.svg';
+        }
+        cell.append(img);
+      }
+    });
     board.append(cell);
   }
   app.append(board);
