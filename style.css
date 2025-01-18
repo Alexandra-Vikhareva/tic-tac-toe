@@ -125,12 +125,13 @@ input, label{
     gap: 10px;
     justify-content: center;
     align-content: center;
-
+    border-radius: 10px;
 }
 
 .cell {
     aspect-ratio: 1;
     background-color: #4E4E50;
+    border-radius: 10px;
 }
 
 form {
