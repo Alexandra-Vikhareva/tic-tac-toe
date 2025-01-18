@@ -148,5 +148,10 @@ form {
 }
 
 .start.button {
+    margin-top: 5em;
     text-align: center;
+}
+
+.start.button input{
+    padding: 1rem;
 }
