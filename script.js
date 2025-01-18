@@ -1,11 +1,12 @@
 const gameboard = (function() {
 
-    const board = ['','','', '','','','','',''];
+    const board = ['','','','','','','','',''];
 
     const addSign = (index, sign) => {
         if (getSign(index) === '') {
             board[index] = sign;
         }
+        checkWins(sign);
     }
 
     const getSign = (index) => {
@@ -27,9 +28,12 @@ const gameboard = (function() {
       (board[2] == sign && board[5] == sign && board[8] == sign)||
       (board[0] == sign && board[4] == sign && board[8] == sign)||
       (board[6] == sign && board[4] == sign && board[2] == sign)
-    ) console.log(`Game over. The winer is ${sign}`);
+    ) {
+      console.log(`Game over. The winer is ${sign}`);
+      return true;
     }
-
+    return false;
+  }
     return {board, addSign, getSign, resetBoard, checkWins}
 
 })();
