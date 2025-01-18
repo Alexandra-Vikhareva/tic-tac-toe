@@ -45,3 +45,12 @@ function createPlayer(name, sign) {
   
   return {name, sign, getWinsCount, giveWinsCount};
 }
+
+let [namePlayer1, namePlayer2] = ['', ''];
+const startButton = document.querySelector('.start.button input');
+const form = document.querySelector('form');
+startButton.addEventListener('click', () => {
+  namePlayer1 = playerName1.value;
+  namePlayer2 = playerName2.value;
+  form.remove();
+})
