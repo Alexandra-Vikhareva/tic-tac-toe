@@ -22,6 +22,10 @@ const gameboard = (function() {
 
 })();
 
-function createPlayer(sign) {
-    return {sign}
+function createPlayer(name, sign) {
+  let winsCount = 0;
+  const getWinsCount = () => winsCount;
+  const giveWinsCount = () => ++winsCount;
+  
+  return {name, sign, getWinsCount, giveWinsCount};
 }
