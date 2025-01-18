@@ -7,7 +7,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div>Tic Tac Toe</div>
+    <div id='app'>
+        <form action="" class="players-form" method="get">
+            <div id="players">
+                <div id="player1">
+                    <label for="playerName1">First player name:</label>
+                    <input type="text" name="playerName1" id="playerName1" required/>
+                </div>
+                <div id="player2">
+                    <label for="playerName2">Second player name:</label>
+                    <input type="text" name="playerName2" id="playerName2" required/>
+                </div>
+            </div>
+            <div class="button">
+                <input type="button" value="Start Game!">
+            </div>
+        </form>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
