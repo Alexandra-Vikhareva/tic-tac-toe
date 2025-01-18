@@ -60,7 +60,7 @@ startButton.addEventListener('click', () => {
 function drawBoard(){
   let board = document.createElement('div');
   board.className = 'board';
-  for (let i = 0; i < 8; i++){
+  for (let i = 0; i <= 8; i++){
     let cell = document.createElement('div');
     cell.className = 'cell';
     board.append(cell);
