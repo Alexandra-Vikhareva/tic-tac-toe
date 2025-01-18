@@ -49,8 +49,18 @@ function createPlayer(name, sign) {
 let [namePlayer1, namePlayer2] = ['', ''];
 const startButton = document.querySelector('.start.button input');
 const form = document.querySelector('form');
+const add = document.querySelector('#app');
 startButton.addEventListener('click', () => {
   namePlayer1 = playerName1.value;
   namePlayer2 = playerName2.value;
   form.remove();
+  drawBoard();
 })
+
+function drawBoard(){
+  for (let i = 0; i < 8; i++){
+    let cell = document.createElement('div');
+    cell.className = 'cell';
+    add.append(cell);
+  }
+}
