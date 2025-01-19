@@ -54,6 +54,7 @@ startButton.addEventListener('click', () => {
   namePlayer1 = playerName1.value;
   namePlayer2 = playerName2.value;
   form.remove();
+  drawScore();
   drawBoard();
 })
 
@@ -83,4 +84,17 @@ function drawBoard(){
     board.append(cell);
   }
   app.append(board);
+}
+
+function drawScore(){
+  const player1 = createPlayer(namePlayer1, 'X');
+  const player2 = createPlayer(namePlayer2, 'O');
+  const score = document.createElement('div');
+  score.className = 'score';
+  const player1Score = document.createElement('div');
+  const player2Score = document.createElement('div');
+  player1Score.innerHTML = `${player1.name} (${player1.sign}): ${player1.getWinsCount()}`;
+  player2Score.innerHTML = `${player2.name} (${player2.sign}): ${player2.getWinsCount()}`;
+  score.append(player1Score, player2Score);
+  app.append(score);
 }
