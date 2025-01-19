@@ -80,7 +80,7 @@ function drawBoard(){
     let cell = document.createElement('div');
     cell.className = 'cell';
     cell.addEventListener('click', () => {
-      if (!gameboard.checkWins('X') || !gameboard.checkWins('X')){
+      if (!gameboard.checkWins('X') && !gameboard.checkWins('O')){
         const cells = Array.from(document.querySelectorAll('.cell'));
         const checkedIndex = cells.indexOf(cell);
         if (gameboard.board[checkedIndex]==''){
