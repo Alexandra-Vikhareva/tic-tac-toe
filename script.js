@@ -46,32 +46,19 @@ function createPlayer(name, sign) {
   return {name, sign, getWinsCount, giveWinsCount};
 }
 
-let [namePlayer1, namePlayer2] = ['', ''];
 const startButton = document.querySelector('.start.button input');
 const form = document.querySelector('form');
 const app = document.querySelector('#app');
 startButton.addEventListener('click', () => {
-  namePlayer1 = playerName1.value;
-  namePlayer2 = playerName2.value;
+  const player1 = createPlayer(playerName1.value, 'X');
+  const player2 = createPlayer(playerName2.value, 'O');  
   form.remove();
-  drawScore();
-  drawBoard();
-  const div = document.createElement('div');
-  const btn = document.createElement('button');
-  btn.className = 'reset';
-  btn.innerHTML = 'Reset board';
-  div.className =  'btnDiv'
-  div.append(btn);
-  app.appendChild(div);
-  btn.addEventListener('click', () => {
-    const oldBoard = document.querySelector('.board');
-    oldBoard.remove();
-    gameboard.resetBoard();
-    drawBoard();
-  })
+  drawScore(player1, player2);
+  drawBoard(player1, player2);
+  drawResetButton(player1, player2);
 })
 
-function drawBoard(){
+function drawBoard(player1, player2){
   let round = 0;
   const marks = ['O', 'X'];
   let board = document.createElement('div');
@@ -93,17 +80,28 @@ function drawBoard(){
             img.src = 'https://jithin-rajesh.github.io/tic-tac-toe/icons/circle-svgrepo-com.svg';
           }
           cell.append(img);
-        }}
-    });
+          if (gameboard.checkWins('X')){
+            player1.giveWinsCount();
+            drawScore(player1, player2);
+          }
+          if (gameboard.checkWins('O')){
+            player2.giveWinsCount();
+            drawScore(player1, player2);
+          }
+        }
+      }
+  });
     board.append(cell);
   }
   const score = document.querySelector('.score');
   score.after(board);
 }
 
-function drawScore(){
-  const player1 = createPlayer(namePlayer1, 'X');
-  const player2 = createPlayer(namePlayer2, 'O');
+function drawScore(player1, player2){
+  if (document.querySelector('.score') != null){
+    const score = document.querySelector('.score');
+    score.remove();
+  }
   const score = document.createElement('div');
   score.className = 'score';
   const player1Score = document.createElement('div');
@@ -111,5 +109,21 @@ function drawScore(){
   player1Score.innerHTML = `${player1.name} (${player1.sign}): ${player1.getWinsCount()}`;
   player2Score.innerHTML = `${player2.name} (${player2.sign}): ${player2.getWinsCount()}`;
   score.append(player1Score, player2Score);
-  app.append(score);
+  app.prepend(score);
+}
+
+function drawResetButton(player1, player2){
+  const div = document.createElement('div');
+  const btn = document.createElement('button');
+  btn.className = 'reset';
+  btn.innerHTML = 'Reset board';
+  div.className =  'btnDiv'
+  div.append(btn);
+  app.appendChild(div);
+  btn.addEventListener('click', () => {
+    const oldBoard = document.querySelector('.board');
+    oldBoard.remove();
+    gameboard.resetBoard();
+    drawBoard(player1, player2);
+  })
 }
