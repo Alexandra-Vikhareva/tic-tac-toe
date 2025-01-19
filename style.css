@@ -164,3 +164,13 @@ form {
     padding: 1em;
     font-size: 1.5em;
 }
+
+.reset {
+    background-color: #c3073f;
+    border-radius: 10px;
+    padding: 0.5em;
+    margin: 1em auto;
+}
+.btnDiv {
+    text-align: center;
+}

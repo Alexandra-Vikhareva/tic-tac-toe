@@ -56,6 +56,13 @@ startButton.addEventListener('click', () => {
   form.remove();
   drawScore();
   drawBoard();
+  const div = document.createElement('div');
+  const btn = document.createElement('button');
+  btn.className = 'reset';
+  btn.innerHTML = 'Reset board';
+  div.className =  'btnDiv'
+  div.append(btn);
+  app.appendChild(div);
 })
 
 function drawBoard(){
