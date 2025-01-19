@@ -63,6 +63,12 @@ startButton.addEventListener('click', () => {
   div.className =  'btnDiv'
   div.append(btn);
   app.appendChild(div);
+  btn.addEventListener('click', () => {
+    const oldBoard = document.querySelector('.board');
+    oldBoard.remove();
+    gameboard.resetBoard();
+    drawBoard();
+  })
 })
 
 function drawBoard(){
@@ -90,7 +96,8 @@ function drawBoard(){
     });
     board.append(cell);
   }
-  app.append(board);
+  const score = document.querySelector('.score');
+  score.after(board);
 }
 
 function drawScore(){
